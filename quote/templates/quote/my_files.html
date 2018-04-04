@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block body %}
+<div class="container">
+    <a class="btn" href="{% url 'quote:add-file' %}">Add File</a>
+    {% if files %}
+    <table>
+        <thead>
+            <th></th>
+            <th>Title</th>
+            <th>Date Created</th>
+        </thead>
+        <tbody>
+        {% for file in files %}
+            <tr>
+                <td><a class="btn" href="{% url 'quote:edit-file' file.pk %}">Edit</a></td>
+                <td>{{ file.title }}</td>
+                <td>{{ file.created }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

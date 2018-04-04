@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-transparent" color-on-scroll="500">
+    <nav class="navbar navbar-expand-md">
         <div class="container">
             <div class="navbar-translate">
                 <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
                 <ul class="navbar-nav ml-auto">
                     {% if user.is_superuser %}
                     <li class="nav-item">
-                        <a href="{% url 'admin:index' %}">Admin</a>
+                        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -46,49 +46,36 @@
                             Home
                         </a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8000/admin/login/?next=/admin/">
+						<a class="nav-link" href="{% url 'quote:my-files' %}">My Files</a>
+					</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            Logout
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
                             Login
                         </a>
                     </li>
                     <li class="nav-item">
-						<a class="btn btn-danger btn-round" href="#">Sign Up</a>
+						<a class="btn btn-danger btn-round" href="{% url 'signup' %}">Sign Up</a>
 					</li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="wrapper">
-        <div class="page-header section-dark" style="background-image: url('{% static '/img/antoine-barres.jpg' %}')">
-            <div class="filter"></div>
-    		<div class="content-center">
-    			<div class="container">
-    				<div class="title-brand">
-    					<h1 class="presentation-title">BidMethod</h1>
-    					<div class="fog-low">
-    						<img src="{% static 'img/fog-low.png' %}" alt="">
-    					</div>
-    					<div class="fog-low right">
-    						<img src="{% static 'img/fog-low.png' %}" alt="">
-    					</div>
-    				</div>
-
-    				<h2 class="presentation-subtitle text-center">Make your mark with a Free Bootstrap 4 UI Kit! </h2>
-    			</div>
-    		</div>
-    	</div>
-        <div class="main">
-            {% block body %}{% endblock %}
-        </div>
-	</div>
+    {% block body %}{% endblock %}
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <nav class="footer-nav">
                     <ul>
                         <li><a href="{% url 'webpages:home' %}">Home</a></li>
-                        <li><a href="{% url 'webpages:home' %}">About</a></li>
-                        <li><a href="{% url 'webpages:home' %}">Contact Us</a></li>
                     </ul>
                 </nav>
                 <div class="credits ml-auto">
