@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block body %}
+<div class="container">
+    <h1>Bid</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr><td colspan="2"><h2>Bid Info</h2></td></tr>
+            {% for field in form.information_fields %}
+            <tr>
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+            <tr><td colspan="2"><h2>Branch Info</h2></td></tr>
+            {% for field in form.branch_fields %}
+            <tr>
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endblock %}

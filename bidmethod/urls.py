@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^account/', include('account.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^quote/', include('quote.urls', namespace='quote')),
+    url(r'^bid/', include('bid.urls', namespace='bid')),
 ]

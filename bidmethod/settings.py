@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'account',
     'quote',
     'bootstrap3',
+    'bid'
 ]
 
 MIDDLEWARE = [
