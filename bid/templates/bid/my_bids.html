@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block body %}
+<div class="container">
+    <h1>My Bids</h1>
+    <br/>
+    <a class="btn" href="{% url 'bid:add-bid' %}">Add Bid</a>
+    <hr/>
+    {% if bids %}
+    <table>
+        <thead>
+            <th></th>
+            <th>Bid Entity</th>
+            <th>Date Created</th>
+        </thead>
+        <tbody>
+        {% for bid in bids %}
+            <tr>
+                <td><a class="btn" href="{% url 'bid:edit-bid' bid.pk %}">Edit</a></td>
+                <td>{{ bid.bid_entity }}</td>
+                <td>{{ bid.created }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

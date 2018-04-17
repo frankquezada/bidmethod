@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpages',
     'account',
-    'quote',
+    'document',
     'bootstrap3',
     'bid'
 ]

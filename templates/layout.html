@@ -48,10 +48,10 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-						<a class="nav-link" href="{% url 'quote:my-files' %}">My Files</a>
+						<a class="nav-link" href="{% url 'bid:my-bids' %}">My Bids</a>
 					</li>
                     <li class="nav-item">
-						<a class="nav-link" href="{% url 'bid:bid' %}">Bid</a>
+						<a class="nav-link" href="{% url 'document:my-documents' %}">My Documents</a>
 					</li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">
@@ -72,13 +72,18 @@
             </div>
         </div>
     </nav>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+    {% endfor %}
+    {% endif %}
     {% block body %}{% endblock %}
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <nav class="footer-nav">
                     <ul>
-                        <li><a href="{% url 'webpages:home' %}">Home</a></li>
+                        <li></li>
                     </ul>
                 </nav>
                 <div class="credits ml-auto">

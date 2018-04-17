@@ -1,7 +1,12 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
 class Bid(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    archived = models.DateTimeField(null=True)
     bid_entity = models.CharField(max_length=50)
     bid_number = models.CharField(max_length=50)
     bid_title = models.CharField(max_length=50)

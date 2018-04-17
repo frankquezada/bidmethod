@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-class UserFile(models.Model):
+class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=25)
     created = models.DateTimeField(auto_now_add=True)

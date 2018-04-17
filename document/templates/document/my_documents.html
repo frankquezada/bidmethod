@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block body %}
+<div class="container">
+    <h1>My Documents</h1>
+    <br/>
+    <a class="btn" href="{% url 'document:add-document' %}">Add Document</a>
+    <hr/>
+    {% if documents %}
+    <table>
+        <thead>
+            <th></th>
+            <th>Title</th>
+            <th>Date Created</th>
+        </thead>
+        <tbody>
+        {% for document in documents %}
+            <tr>
+                <td><a class="btn" href="{% url 'document:edit-document' document.pk %}">Edit</a></td>
+                <td>{{ document.title }}</td>
+                <td>{{ document.created }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
