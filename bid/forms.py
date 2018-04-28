@@ -1,9 +1,10 @@
 from django import forms
 
 from .models import Bid
-
+from document.models import Document
 
 class AddBidForm(forms.ModelForm):
+    # documents = forms.ModelMultipleChoiceField(queryset=Document.objects.all())
     class Meta:
         model = Bid
         fields = [
@@ -19,6 +20,7 @@ class AddBidForm(forms.ModelForm):
             'branch',
             'branch_region',
             'branch_contact',
+            'documents',
         ]
 
     def information_fields(self):

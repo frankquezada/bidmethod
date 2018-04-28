@@ -3,12 +3,12 @@
 
 {% block body %}
 <div class="container">
-    <h1>My Bids</h1>
-    <br/>
-    <a class="btn" href="{% url 'bid:add-bid' %}">Add Bid</a>
+    <div>
+    <h1>My Bids <a class="btn btn-primary pull-right" href="{% url 'bid:add-bid' %}">Add Bid</a></h1>
     <hr/>
+    </div>
     {% if bids %}
-    <table>
+    <table class="table table-striped table-hover table-borderless">
         <thead>
             <th></th>
             <th>Bid Entity</th>
@@ -17,7 +17,7 @@
         <tbody>
         {% for bid in bids %}
             <tr>
-                <td><a class="btn" href="{% url 'bid:edit-bid' bid.pk %}">Edit</a></td>
+                <td><a class="btn btn-primary" href="{% url 'bid:edit-bid' bid.pk %}">Edit</a></td>
                 <td>{{ bid.bid_entity }}</td>
                 <td>{{ bid.created }}</td>
             </tr>

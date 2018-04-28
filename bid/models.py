@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from document.models import Document
 
 class Bid(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,6 +20,12 @@ class Bid(models.Model):
     branch = models.CharField(max_length=50)
     branch_region = models.CharField(max_length=50)
     branch_contact = models.CharField(max_length=50)
+    # documents = models.ManyToManyField(Document, through='BidDocument')
+    documents = models.ManyToManyField(Document, blank=True)
 
     def __str__(self):
         return str(self.bid_entity)
+
+# class BidDocument(models.Model):
+#     bid = models.ForeignKey(Bid)
+#     document = models.ForeignKey(Document)

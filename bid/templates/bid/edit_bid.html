@@ -8,7 +8,8 @@
     <form method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input class="btn" type="submit" value="Update">
+        <input class="btn btn-primary" type="submit" value="Update">
+        <a class="btn btn-primary" href="{% url 'bid:add-documents' bid.pk %}">Add Documents</a>
     </form>
 </div>
 {% endblock %}
